@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Marks Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background: white;
+            width: 420px;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+            color: #777;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5568d8;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f0f2ff;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .marks {
+            font-size: 30px;
+            font-weight: bold;
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>🎓 Student Marks Prediction</h1>
+
+    <p>Predict student performance using Machine Learning</p>
+
+    <form method="POST">
+
+        <label>Study Hours</label>
+        <input type="number" name="hours" step="0.1" required>
+
+        <label>Previous Exam Marks</label>
+        <input type="number" name="previous_marks" min="0" max="100" required>
+
+        <label>Attendance Percentage</label>
+        <input type="number" name="attendance" min="0" max="100" required>
+
+        <button type="submit">Predict Marks</button>
+
+    </form>
+
+    {% if prediction is not none %}
+
+    <div class="result">
+
+        <div>Predicted Marks</div>
+
+        <div class="marks">
+            {{ "%.2f"|format(prediction) }}
+        </div>
+
+        <p>Performance: {{ performance }}</p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
